@@ -1,0 +1,24 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Ephesis', cursive;
+}
+h1,
+h2,
+h3 {
+	color: rgb(100, 100, 100);
+	font-weight: 400;
+}
+.App {
+	transition: all 0.5s ease;
+}
+.active-playlist {
+	margin-left: 20%;
+}
+@import './player';
+@import './song';
+@import './playlist';
+@import './nav';
