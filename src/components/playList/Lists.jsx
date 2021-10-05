@@ -1,13 +1,15 @@
 import React from 'react';
+import {useMyContext} from '../../Store/Context';
 import List from './List';
 
-const Lists = ({songs, setCurrentSong, refPlay, setSongs, isPlayListActive}) => {
+const Lists = () => {
+	const [state] = useMyContext();
 	return (
-		<div className={`playlist ${isPlayListActive ? 'playlist-active' : ''}`}>
-			<h2>PlayList</h2>
+		<div className={`playlist ${state.isPlayListActive ? 'playlist-active' : ''}`}>
+			<h2 style={{fontFamily: 'Ephesis'}}>PlayList</h2>
 			<div className='playlist-songs'>
-				{songs.map((song) => (
-					<List key={song.id} id={song.id} songs={songs} song={song} setCurrentSong={setCurrentSong} refPlay={refPlay} setSongs={setSongs} />
+				{state.songs.map((song) => (
+					<List key={song.id} id={song.id} songs={state.songs} song={song} />
 				))}
 			</div>
 		</div>

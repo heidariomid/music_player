@@ -1,25 +1,14 @@
 import React from 'react';
+import {setCurrentSong, setSongs} from '../../Store/actions';
+import {useMyContext} from '../../Store/Context';
 
-const List = ({songs, song, setCurrentSong, refPlay, setSongs}) => {
+const List = ({song}) => {
 	const {id, name, cover, artist, active, color} = song;
-	const {isPlaying, audioRef} = refPlay;
-
+	const [state, dispatch] = useMyContext();
+	const {isPlaying, audioRef} = state;
 	const changeSongHandler = async () => {
-		await setCurrentSong(song);
-		const newSong = songs.map((song) => {
-			if (song.id === id) {
-				return {
-					...song,
-					active: true,
-				};
-			} else {
-				return {
-					...song,
-					active: false,
-				};
-			}
-		});
-		setSongs(newSong);
+		await dispatch(setCurrentSong(song));
+		dispatch(setSongs(id));
 		return isPlaying && audioRef.current.play();
 	};
 	return (
@@ -28,6 +17,7 @@ const List = ({songs, song, setCurrentSong, refPlay, setSongs}) => {
 			<div className='song-desc'>
 				<h3>{name}</h3>
 				<h4>{artist}</h4>
+				<h4>{id}</h4>
 			</div>
 		</div>
 	);

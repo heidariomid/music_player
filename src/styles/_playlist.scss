@@ -65,18 +65,8 @@
 		background-color: rgb(255, 255, 255);
 	}
 	.playlist-song {
-		justify-content: space-around;
 		img {
-			width: 25%;
-		}
-	}
-	.song-desc {
-		padding: 0;
-		h3 {
-			font-size: 2rem;
-		}
-		h4 {
-			font-size: 1.5rem;
+			width: 30%;
 		}
 	}
 }

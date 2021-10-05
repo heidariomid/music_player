@@ -1,8 +1,10 @@
 import React from 'react';
+import {useMyContext} from '../../Store/Context';
 
-const Song = ({currentSong, refPlay}) => {
-	const {name, cover, artist, color} = currentSong;
-	const {isPlaying} = refPlay;
+const Song = () => {
+	const [state] = useMyContext();
+	const {isPlaying} = state;
+	const {name, cover, artist, color} = state.currentSong;
 
 	return (
 		<div className={`song-container ${isPlaying ? 'rotate-img' : ''} `}>
